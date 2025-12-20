@@ -7,7 +7,7 @@ menu.onclick = () => {
 }
 
 function downloadResume() {
-    window.location.href = "resume/resumepdf.pdf";
+    window.location.href = "resume/resu.pdf";
 }
 
 window.onscroll = () => {
@@ -66,3 +66,4 @@ underWorking.forEach((val)=>{
         alert("sorry! under working");
     })
 })
+
