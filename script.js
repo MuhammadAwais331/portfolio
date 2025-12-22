@@ -37,9 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Validate input
         if (!fullName || !email || !phone || !subject || !message) {
-            alert("Please fill in all fields.");
+            alert("Please fill in all fields!");
             return;
         }
+
+        if (!email.includes("@") || !email.includes(".")) {
+            alert("Please correct your email!")
+            return;
+        }
+
+        const lastSent = localStorage.getItem("lastSent");
+        if (lastSent && Date.now() - lastSent < 60000) {
+            alert("Please wait 1 minute before sending again");
+            return;
+        }
+        localStorage.setItem("lastSent", Date.now());
 
         // EmailJS integration
         emailjs.send("service_q5cs8fs", "template_n5o8cki", {
@@ -60,10 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-let underWorking=document.querySelectorAll(".underworking");
-underWorking.forEach((val)=>{
-    val.addEventListener("click",()=>{
+let underWorking = document.querySelectorAll(".underworking");
+underWorking.forEach((val) => {
+    val.addEventListener("click", () => {
         alert("sorry! under working");
     })
 })
-
